@@ -1,0 +1,95 @@
+<!--通过点击按钮控制图片的显示与隐藏效果-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>显示和隐藏图片</title>
+</head>
+<body>
+<button id="btn">隐藏</button>
+<p></p>
+<img src="images/flower01.jpg" alt=""/>
+<script>
+    window.onload = function (){
+        // 1、获取事件源和相关的元素
+        var btn = document.getElementById("btn");
+        var img = document.getElementsByTagName("img")[0];
+
+        // 2、绑定事件
+        btn.onclick = function (){
+            // 3、事件的驱动程序
+            if(btn.innerText === "隐藏"){
+                img.style.display = "none";
+                btn.innerText = "显示"
+            }else{
+                img.style.display = "block";
+                btn.innerText = "隐藏"
+            }
+        }
+    }
+</script>
+</body>
+</html>
+
+<!--通过鼠标移入和移出控制图片的显示和隐藏-->
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #house{
+            width: 64px;
+            height: 64px;
+
+            background: url("images/house.png") no-repeat;
+
+            position: fixed;
+            top: 45%;
+            left: 0;
+            cursor: pointer;
+        }
+        #big{
+            position: absolute;
+            left: 64px;
+            top: -308px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="house">
+    <div id="big">
+      <img src="images/house02.jpg" alt="大房子"/>
+    </div>
+</div>
+<script>
+    window.onload = function(){
+        // 1. 获取相应的标签
+        var house = document.getElementById("house");
+
+        var big = document.getElementById("big");
+
+        // 2. 监听鼠标进入
+        house.onmouseover = function(){
+            // 2.1 改变背景图片
+            this.style.background = 'url("images/house01.png") no-repeat';
+            // 2.2 显示隐藏图片
+            big.style.display = "block";
+        };
+        //3. 监听鼠标离开
+        house.onmouseout = function(){
+            // 3.1 改变背景图片
+            this.style.background = 'url("images/house.png") no-repeat';
+            // 3.2 隐藏图片
+            big.style.display = "none";
+        }
+    }
+</script>
+</body>
+</html>
